@@ -1,0 +1,21 @@
+<head>
+    <title>MIPS Fun</title>
+</head>
+<body>
+    <script src="js/utils.js"></script>
+    <script src="js/consts.js"></script>
+    <script src="js/compile.js"></script>
+    <script src="js/decode.js"></script>
+    <script src="js/exec.js"></script>
+    <script>
+        var xobj = new XMLHttpRequest();
+        xobj.overrideMimeType("application/json");
+        xobj.open('GET', 'test.asm', true); // Replace 'my_data' with the path to your file
+        xobj.onreadystatechange = function () {
+            if (xobj.readyState == 4 && xobj.status == "200") {
+                runMIPS(compileCode(xobj.responseText))
+            }
+        };
+        xobj.send(null);  
+    </script>
+</body>
